@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "REO : Reddit essentials only",
+    "description": "Réduit Reddit à ses éléments essentiels afin de diminuer le risque d'y passer trop de temps.",
+    "version": "1.0",
+
+    "content_scripts": [
+        {
+            "js": ["scripts/content.js"],
+            "matches": ["https://www.reddit.com/r/*"]
+        }
+    ],
+
+    "web_accessible_resources": [
+    {
+      "resources": ["styles/content.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
