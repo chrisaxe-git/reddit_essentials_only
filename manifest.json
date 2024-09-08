@@ -13,6 +13,9 @@
         "default_popup": "popup/popup.html",
         "default_icon": "images/logo-16.png"
     },
+    "background": {
+        "service_worker": "background.js"
+    },
     "content_scripts": [
         {
             "css": ["content/content.css"],
@@ -20,15 +23,6 @@
             "matches": ["https://*.reddit.com/*"]
         }
     ],
-    "background": {
-        "service_worker": "background.js"
-    },
     
-    "permissions": ["tabs"],
-    "web_accessible_resources": [
-        {
-        "resources": ["styles/content.css"],
-        "matches": ["<all_urls>"]
-        }
-    ]
+    "permissions": ["tabs"]
 }
