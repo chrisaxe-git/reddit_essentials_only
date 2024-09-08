@@ -1,20 +1,34 @@
 {
     "manifest_version": 3,
-    "name": "REO : Reddit essentials only",
+    "name": "REO : Reddit Essentials Only",
     "description": "Réduit Reddit à ses éléments essentiels afin de diminuer le risque d'y passer trop de temps.",
     "version": "1.0",
 
+    "icons": {
+        "16": "images/logo-16.png",
+        "32": "images/logo-32.png",
+        "128": "images/logo-128.png"
+    },
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_icon": "images/logo-16.png"
+    },
     "content_scripts": [
         {
-            "js": ["scripts/content.js"],
-            "matches": ["https://www.reddit.com/r/*"]
+            "css": ["content/content.css"],
+            "js": ["content/content.js"],
+            "matches": ["https://*.reddit.com/*"]
         }
     ],
-
+    "background": {
+        "service_worker": "background.js"
+    },
+    
+    "permissions": ["tabs"],
     "web_accessible_resources": [
-    {
-      "resources": ["styles/content.css"],
-      "matches": ["<all_urls>"]
-    }
-  ]
+        {
+        "resources": ["styles/content.css"],
+        "matches": ["<all_urls>"]
+        }
+    ]
 }
