@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "REO : Reddit Essentials Only",
-    "description": "Réduit Reddit à ses éléments essentiels afin de diminuer le risque d'y passer trop de temps.",
+    "name": "Reddit Essentials Only",
+    "description": "Limitez les posts et commentaires sur Reddit afin d'y passer moins de temps et d'améliorez votre productivité.",
     "version": "1.0",
 
     "icons": {

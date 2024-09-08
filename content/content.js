@@ -10,9 +10,9 @@ chrome.runtime.sendMessage({action: "getTabUrl"}, function(response) {
     const url = response.url;
 
     if (!url.includes("old.") && !url.includes("/comments/")) { //subreddit pages
-        const to_remove_sub_pages = [`[id="left-sidebar-container"]`, `[id="right-sidebar-container"]`, `[class="flex w-100 xs:w-auto mt-xs xs\\:mt-0"]`, ".promotedlink", `div[slot="post-media-container"]`, "nav", `div[class="@container"]`]; // 3 = publier un post, last = bannière
+        const to_remove = [`[id="left-sidebar-container"]`, `[id="right-sidebar-container"]`, `[class="flex w-100 xs:w-auto mt-xs xs\\:mt-0"]`, ".promotedlink", `div[slot="post-media-container"]`, "nav", `div[class="@container"]`]; // 3 = publier un post, last = bannière
         
-        for (i of to_remove_sub_pages) {for (j of document.querySelectorAll(i)) {j.remove()}};
+        for (i of to_remove) {for (j of document.querySelectorAll(i)) {j.remove()}};
         window.scrollTo({top: 0, left: 0});
         document.body.style.overflow = "hidden";
         
@@ -35,17 +35,20 @@ chrome.runtime.sendMessage({action: "getTabUrl"}, function(response) {
         }, 1500);
         
     } else if (url.includes("old.") && !url.includes("/comments/")) { //old subreddit pages
-        const to_remove_sub_pages = [`section`, "#header-bottom-left", ".side", "#header", ".infobar-toaster-container", ".promotedlink"];
+        const to_remove = [`section`, "#header-bottom-left", ".side", "#header", ".infobar-toaster-container", ".promotedlink", ".nav-buttons", ".footer-parent", ".debuginfo"];
         
-        for (i of to_remove_sub_pages) {for (j of document.querySelectorAll(i)) {j.remove()}};
-        window.scrollTo({top: 0, left: 0});
-        document.body.setAttribute("style", "max-width: 1500px; margin: auto; background-color: #F7FAFE; box-shadow: 0 0 195px -13px rgba(0,0,0,0.5)") ;
+        for (i of to_remove) {for (j of document.querySelectorAll(i)) {j.remove()}};
+        document.body.setAttribute("style", "max-width: 1500px; margin: auto; background-color: #F7FAFE; box-shadow: 0 0 195px -13px rgba(0,0,0,0.5);") ;
+        if (!url.includes("/r/all")) {document.querySelector(".menuarea").setAttribute("style", "border-bottom: none")}
         document.body.style.overflow = "hidden";
+        setTimeout(() => {
+            window.scrollTo({top: 0, left: 0});
+        }, 200);
 
     } else if (url.includes("old.") && url.includes("/comments/")) { //old comment pages
-        const to_remove_sub_pages = [`section`, "#header-bottom-left", ".side", "#header", ".infobar-toaster-container", ".title-button", ".promotedlink", ".morechildren", ".debuginfo", ".footer-parent", `div[class="sitetable nestedlisting"] > .thing.comment:nth-child(n+10)`];
+        const to_remove = [`section`, "#header-bottom-left", ".side", "#header", ".infobar-toaster-container", ".title-button", ".promotedlink", ".morechildren", ".debuginfo", ".footer-parent", `div[class="sitetable nestedlisting"] > .thing.comment:nth-child(n+10)`];
         
-        for (i of to_remove_sub_pages) {for (j of document.querySelectorAll(i)) {j.remove()}};
+        for (i of to_remove) {for (j of document.querySelectorAll(i)) {j.remove()}};
         window.scrollTo({top: 0, left: 0});
         document.body.setAttribute("style", "max-width: 1500px; margin: auto; background-color: #F7FAFE; box-shadow: 0 0 195px -13px rgba(0,0,0,0.5)") ;
         document.querySelector(".panestack-title").setAttribute("style", "border-bottom: none")
