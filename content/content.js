@@ -30,6 +30,7 @@ chrome.runtime.sendMessage({action: "getTabUrl"}, function(response) {
         
         setTimeout(() => { // Délai le temps que les nouveaux messages se chargent
             window.scrollTo({top: 0, left: 0});
+            document.querySelector(".pb-xl").style.paddingBottom = "20rem";
             for (item of document.querySelectorAll(`#comment-tree > [depth="0"]:nth-child(n+6)`)) {item.remove()}; // Tous les messages suivants sauf les 6 premiers
             for (i of document.querySelectorAll(".promotedlink")) {i.remove()}
             for (i of document.querySelectorAll("shreddit-comment-tree-ad")) {i.remove()}
