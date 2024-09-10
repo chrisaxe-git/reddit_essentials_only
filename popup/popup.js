@@ -8,3 +8,4 @@ chrome.tabs.query({ active: true, currentWindow: true}, function(tabs) {
 //     chrome.runtime.sendMessage({action: "toggle_reo"})
 //     document.querySelector("button").textContent = "Réactiver REO"
 // }
+//
