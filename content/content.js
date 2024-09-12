@@ -21,21 +21,25 @@ chrome.runtime.sendMessage({action: "getTabUrl"}, function(response) {
         }, 3000);
 
     } else if (!url.includes("old.") && url.includes("/comments/")) { // comment pages
-        let to_remove = ["#right-sidebar-container", "#left-sidebar-container", "comment-body-header", "nav", ".promotedlink", "shreddit-comment-tree-ad", `#comment-tree > [depth="0"]:nth-child(n+6)`]; // #comment-tree > [depth="0"]:nth-child(n+6) le premier commentaire comment à n+2, donc là ça fait 4
+        let to_remove = ["#right-sidebar-container", "#left-sidebar-container", "comment-body-header", "nav", "pdp-back-button", `[bundlename="shreddit_post_overflow_menu"]`, ".promotedlink", "shreddit-comment-tree-ad", `#comment-tree > [depth="0"]:nth-child(n+6)`]; // #comment-tree > [depth="0"]:nth-child(n+6) le premier commentaire comment à n+2, donc là ça fait 4
         
         setTimeout(() => { // Délai le temps que les premiers messages se chargent
             window.scrollTo({top: 15000, left: 0, behavior: 'smooth'});
             for (i of to_remove) {for (j of document.querySelectorAll(i)) {j.remove()}};
         }, 500);
         
-        setTimeout(() => { // Délai le temps que les nouveaux messages se chargent
+        setTimeout(() => {
+            window.scrollTo({top: 0, left: 0});
+        }, 1500);
+
+        setTimeout(() => {
             window.scrollTo({top: 0, left: 0});
             document.querySelector(".pb-xl").style.paddingBottom = "20rem";
             for (item of document.querySelectorAll(`#comment-tree > [depth="0"]:nth-child(n+6)`)) {item.remove()}; // Tous les messages suivants sauf les 6 premiers
             for (i of document.querySelectorAll(".promotedlink")) {i.remove()}
             for (i of document.querySelectorAll("shreddit-comment-tree-ad")) {i.remove()}
             document.querySelector(`faceplate-tracker[noun="load_more_comments"]`).remove(); // Boutton afficher plus de commentaires
-        }, 1500);
+        }, 2500);
         
     } else if (url.includes("old.") && !url.includes("/comments/")) { //old subreddit pages
         const to_remove = [`section`, "#header-bottom-left", ".side", "#header", ".infobar-toaster-container", ".promotedlink", ".nav-buttons", ".footer-parent", ".debuginfo"];
