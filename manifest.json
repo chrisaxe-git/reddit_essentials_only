@@ -18,8 +18,7 @@
     },
     "content_scripts": [
         {
-            "css": ["content/content.css"],
-            "js": ["content/content.js"],
+            "js": ["content.js"],
             "matches": ["https://*.reddit.com/*"]
         }
     ],

@@ -10,14 +10,16 @@ chrome.runtime.sendMessage({action: "getTabUrl"}, function(response) {
     const url = response.url;
 
     if (!url.includes("old.") && !url.includes("/comments/")) { //subreddit pages
-        const to_remove = [`[id="left-sidebar-container"]`, `[id="right-sidebar-container"]`, `[class="flex w-100 xs:w-auto mt-xs xs\\:mt-0"]`, ".promotedlink", `div[slot="post-media-container"]`, "nav", `div[class="@container"]`, `[sort-event="layout-view-change"]`]; // 3 = publier un post, last = bannière
+        const to_remove = [`[id="left-sidebar-container"]`, `[id="right-sidebar-container"]`, `[class="flex w-100 xs:w-auto mt-xs xs\\:mt-0"]`, "community-highlight-carousel", ".masthead", ".promotedlink", `div[slot="post-media-container"]`, "nav", `div[class="@container"]`, `[sort-event="layout-view-change"]`]; // 3 = publier un post, last = bannière
         
         for (i of to_remove) {for (j of document.querySelectorAll(i)) {j.remove()}};
         window.scrollTo({top: 0, left: 0});
-        document.body.style.overflow = "hidden";
+        // document.body.style.overflow = "hidden";
+
         
         setTimeout(() => { // Délai pour chargement posts
             for (i of [`div[slot="post-media-container"]`, ".promotedlink"]) {for (i of document.querySelectorAll(i)) {i.remove()}};
+            for (item of document.querySelectorAll(`shreddit-feed :nth-child(n+14)`)) {item.remove()}; // Tous les posts sauf les 6 premiers
         }, 3000);
 
     } else if (!url.includes("old.") && url.includes("/comments/")) { // comment pages
