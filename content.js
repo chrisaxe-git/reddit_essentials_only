@@ -19,7 +19,7 @@ chrome.runtime.sendMessage({action: "getTabUrl"}, function(response) {
         
         setTimeout(() => { // Délai pour chargement posts
             for (i of [`div[slot="post-media-container"]`, ".promotedlink"]) {for (i of document.querySelectorAll(i)) {i.remove()}};
-            for (item of document.querySelectorAll(`shreddit-feed :nth-child(n+14)`)) {item.remove()}; // Tous les posts sauf les 6 premiers
+            for (item of document.querySelectorAll(`shreddit-feed :nth-child(n+9)`)) {item.remove()}; // Tous les posts sauf les 6 premiers
         }, 3000);
 
     } else if (!url.includes("old.") && url.includes("/comments/")) { // comment pages
