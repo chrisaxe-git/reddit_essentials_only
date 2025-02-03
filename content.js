@@ -55,6 +55,7 @@ chrome.runtime.sendMessage({ action: "getTabUrl" }, function (response) {
             "shreddit-comments-page-ad",
             "shreddit-loading",
             ".mx-md[loading='action']", // more comments button
+            "chat-channel-recommendations-wrapper",
         ];
         
         // Remove elements when they are loaded
