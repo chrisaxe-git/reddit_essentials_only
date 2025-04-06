@@ -13,7 +13,7 @@
     [sort-event="layout-view-change"], /* bannière */
     [bundlename="shreddit_sort_dropdown"],
     shreddit-feed-page-loading,
-    shreddit-feed :nth-child(n+15),
+    shreddit-feed :nth-child(n+8),
     
     /* comment new */
     nav,
@@ -26,11 +26,13 @@
     [bundlename="shreddit_post_overflow_menu"], /* post menu */
     [bundlename="comment_body_header"], /* more post menu */
     .promotedlink,
+    .promoted-name-container,
     shreddit-comment-tree-ad,
     shreddit-comments-page-ad,
     shreddit-loading,
     .mx-md[loading='action'], /* more comments button */
     chat-channel-recommendations-wrapper,
+    #comment-tree > [depth="0"]:nth-child(n+8),
     
     /* subs old */
     section,
@@ -42,7 +44,7 @@
     .nav-buttons,
     .footer-parent,
     .debuginfo,
-    [data-url]:nth-child(n+22), /* all posts except approx 10 firsts*/
+    [data-url]:nth-child(n+8), /* all posts except approx 10 firsts*/
     
     /* comments old */
     section,
@@ -55,7 +57,7 @@
     .morechildren,
     .debuginfo,
     .footer-parent,
-    div[class="sitetable nestedlisting"] > .thing.comment:nth-child(n+6)
+    div[class="sitetable nestedlisting"] > .thing.comment:nth-child(n+8)
 {
     display: none;
 }

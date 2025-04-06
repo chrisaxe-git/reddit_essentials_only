@@ -9,13 +9,13 @@ window.addEventListener("load", function() {
                         let post_selector = "";
                         
                         if (!activeURL.includes("old.") && !activeURL.includes("/comments/")) { // subs new
-                            post_selector = `shreddit-feed :nth-child(-n+${15 + number_of_posts})`;
+                            post_selector = `shreddit-feed:nth-child(-n+${8 + number_of_posts})`;
                         } else if (!activeURL.includes("old.") && activeURL.includes("/comments/")) { // comments new
-                            post_selector = `#comment-tree > [depth="0"]:nth-child(-n+${9 + number_of_posts})`;
+                            post_selector = `#comment-tree > [depth="0"]:nth-child(-n+${8 + number_of_posts})`;
                         } else if (activeURL.includes("old.") && !activeURL.includes("/comments/")) { // subsold
-                            post_selector = `[data-url]:nth-child(-n+${22 + number_of_posts})`;
+                            post_selector = `[data-url]:nth-child(-n+${8 + number_of_posts})`;
                         } else if (activeURL.includes("old.") && activeURL.includes("/comments/")) { // comments old
-                            post_selector = `div[class="sitetable nestedlisting"] > .thing.comment:nth-child(-n+${6 + number_of_posts})`;
+                            post_selector = `div[class="sitetable nestedlisting"] > .thing.comment:nth-child(-n+${8 + number_of_posts})`;
                         }
                         
                         return post_selector;
@@ -35,20 +35,25 @@ window.addEventListener("load", function() {
                     
                     count = parseInt(document.querySelector("#REO_shared_div").innerHTML);
                     if (count === 1) {
-                        document.querySelectorAll(make_post_selector(3)).forEach(comment => comment.style.display = "block");
+                        document.querySelectorAll(make_post_selector(3)).forEach(comment => comment.style.display = "revert");
                         alert("🧙‍♂️ En voilà un ou deux, mais ne sois pas trop gourmand !");
                     } else if (count === 2) {
                         alert("🧙‍♂️ C'est bien parce que je suis gentil, mais ma patience a des limites.");
-                        document.querySelectorAll(make_post_selector(3)).forEach(comment => comment.style.display = "block");
+                        document.querySelectorAll(make_post_selector(6)).forEach(comment => comment.style.display = "revert");
                     } else if (count === 3) {
                         alert("🧙‍♂️ Je te préviens...");
-                        document.querySelectorAll(make_post_selector(3)).forEach(comment => comment.style.display = "block");
+                        document.querySelectorAll(make_post_selector(9)).forEach(comment => comment.style.display = "revert");
                     } else if (count === 4) {
                         alert("🧙‍♂️ Tu l'auras voulu, je ne réponds plus, tant pis pour ta pomme.");
                     } else if (count === 6) {
                         alert("... Hey !");
                     } else if (count > 4 && count <= 7) {
                         alert("...");
+                    }
+                    
+                    let activeURL = window.location.href;
+                    if (!activeURL.includes("old.") && !activeURL.includes("/comments/")) { // subs new
+                        document.querySelectorAll(`img`).forEach(comment => comment.style.display = "none");
                     }
                 }
             });
