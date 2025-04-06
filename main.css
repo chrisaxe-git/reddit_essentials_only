@@ -1,0 +1,63 @@
+[id="left-sidebar-container"],
+    /* subs new */
+    [id="right-sidebar-container"],
+    [class="flex w-100 xs:w-auto mt-xs xs\\:mt-0"],
+    reddit-header-large,
+    community-highlight-carousel, /* publier un post */
+    .masthead,
+    .promotedlink,
+    shreddit-dynamic-ad-link,
+    shreddit-ad-post,
+    nav,
+    div[class="@container"],
+    [sort-event="layout-view-change"], /* bannière */
+    [bundlename="shreddit_sort_dropdown"],
+    shreddit-feed-page-loading,
+    shreddit-feed :nth-child(n+15),
+    
+    /* comment new */
+    nav,
+    #right-sidebar-container,
+    #left-sidebar-container,
+    pdp-back-button,
+    award-button,
+    .py-xs, /* archived message */
+    comment-body-header,
+    [bundlename="shreddit_post_overflow_menu"], /* post menu */
+    [bundlename="comment_body_header"], /* more post menu */
+    .promotedlink,
+    shreddit-comment-tree-ad,
+    shreddit-comments-page-ad,
+    shreddit-loading,
+    .mx-md[loading='action'], /* more comments button */
+    chat-channel-recommendations-wrapper,
+    
+    /* subs old */
+    section,
+    #header-bottom-left,
+    .side,
+    #header,
+    .infobar-toaster-container,
+    .promotedlink,
+    .nav-buttons,
+    .footer-parent,
+    .debuginfo,
+    [data-url]:nth-child(n+22), /* all posts except approx 10 firsts*/
+    
+    /* comments old */
+    section,
+    #header-bottom-left,
+    .side,
+    #header,
+    .infobar-toaster-container,
+    .title-button,
+    .promotedlink,
+    .morechildren,
+    .debuginfo,
+    .footer-parent,
+    div[class="sitetable nestedlisting"] > .thing.comment:nth-child(n+6)
+{
+    display: none;
+}
+
+

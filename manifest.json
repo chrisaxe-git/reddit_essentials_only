@@ -18,10 +18,19 @@
     },
     "content_scripts": [
         {
+            "matches": ["https://*.reddit.com/*"],
             "js": ["content.js"],
-            "matches": ["https://*.reddit.com/*"]
+            "css": ["main.css"]
         }
     ],
-    
-    "permissions": ["tabs"]
+    "commands": {
+        "toggle-reo": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+D"
+            },
+            "description": "Toggle REO"
+        }
+    },
+    "permissions": ["scripting", "tabs"],
+    "host_permissions": ["https://*.reddit.com/*"]
 }

@@ -35,3 +35,17 @@ h2{
     overflow-wrap: anywhere;
     text-align: center;
 }
+
+#disable-css-btn {
+    width: 100px;
+    height: 50px;
+    background-color: #ffffff00;
+    border: #9dcbf0 solid 1px;
+    transform: scaleX(-1);
+}
+#disable-css-btn:active {
+    /* background-color: #dff0ff; */
+    transition: scale 0.1s;
+    scale: 90%;
+    
+}
